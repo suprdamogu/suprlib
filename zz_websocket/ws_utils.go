@@ -1,4 +1,4 @@
-package suprlib
+package ZZWebsocket
 
 import (
 	"golang.org/x/net/websocket"

@@ -1,4 +1,4 @@
-package suprlib
+package ZZJson
 
 import (
 	"bytes"
@@ -16,4 +16,3 @@ func JsonToMap(s []byte) (map[string]interface{}, error) {
 	}
 	return msgMap, nil
 }
-

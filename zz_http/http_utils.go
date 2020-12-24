@@ -1,4 +1,4 @@
-package suprlib
+package ZZHttp
 
 import (
 	"io"

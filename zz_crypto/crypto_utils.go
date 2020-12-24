@@ -1,4 +1,4 @@
-package suprlib
+package ZZCrypto
 
 import (
 	"bytes"
