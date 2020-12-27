@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 )
 
-func (*ZzzJson) JsonToMap(s []byte) (map[string]interface{}, error) {
+func JsonToMap(s []byte) (map[string]interface{}, error) {
 	var msgMap map[string]interface{}
 	decoder := json.NewDecoder(bytes.NewBuffer(s))
 	decoder.UseNumber()
