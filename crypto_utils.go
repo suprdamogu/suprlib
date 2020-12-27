@@ -10,13 +10,13 @@ import (
 	"io/ioutil"
 )
 
-func MD5(b []byte) string {
+func (*ZzzCrypto) MD5(b []byte) string {
 	h := md5.New()
 	h.Write(b)
 	return hex.EncodeToString(h.Sum(nil))
 }
 
-func HmacSHA256(msg []byte, secretKey []byte) ([]byte, error) {
+func (*ZzzCrypto) HmacSHA256(msg []byte, secretKey []byte) ([]byte, error) {
 	h := hmac.New(sha256.New, secretKey)
 	_, err := h.Write(msg)
 	if err != nil {
@@ -26,7 +26,7 @@ func HmacSHA256(msg []byte, secretKey []byte) ([]byte, error) {
 	return hmacSha256, nil
 }
 
-func GZipDecode(in []byte) ([]byte, error) {
+func (*ZzzCrypto) GZipDecode(in []byte) ([]byte, error) {
 	reader, err := gzip.NewReader(bytes.NewReader(in))
 	if err != nil {
 		return nil, err

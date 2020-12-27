@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func HttpGet(url string, headers map[string]string) ([]byte, error) {
+func (*ZzzHttp) HttpGet(url string, headers map[string]string) ([]byte, error) {
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -26,7 +26,7 @@ func HttpGet(url string, headers map[string]string) ([]byte, error) {
 	return ioutil.ReadAll(resp.Body)
 }
 
-func HttpPost(url string, headers map[string]string, body io.Reader) ([]byte, error) {
+func (*ZzzHttp) HttpPost(url string, headers map[string]string, body io.Reader) ([]byte, error) {
 	client := &http.Client{}
 	req, err := http.NewRequest("POST", url, body)
 	if err != nil {
