@@ -6,6 +6,7 @@ import (
 	"crypto/hmac"
 	"crypto/md5"
 	"crypto/sha256"
+	"encoding/base64"
 	"encoding/hex"
 	"io/ioutil"
 )
@@ -33,4 +34,12 @@ func GZipDecode(in []byte) ([]byte, error) {
 	}
 	defer reader.Close()
 	return ioutil.ReadAll(reader)
+}
+
+func Base64Encode(src []byte) string {
+	return base64.StdEncoding.EncodeToString([]byte(src))
+}
+
+func Base64Decode(src string) ([]byte, error) {
+	return base64.StdEncoding.DecodeString(src)
 }
