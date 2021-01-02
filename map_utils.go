@@ -13,3 +13,11 @@ func JsonMapGetInt64Value(data map[string]interface{}, key string) (int64, error
 	}
 	return vNum.Int64()
 }
+
+func JsonMapGetUIntValue(data map[string]interface{}, key string) (uint, error) {
+	vI64, err := JsonMapGetInt64Value(data, key)
+	if err != nil {
+		return 0, err
+	}
+	return uint(vI64), nil
+}
