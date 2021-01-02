@@ -26,6 +26,15 @@ func UIntSliceRemoveFirst(s []uint, data uint) []uint {
 	return append(s[:i], s[i+1:]...)
 }
 
+func Int64SliceContains(s []int64, data int64) bool {
+	for _, item := range s {
+		if item == data {
+			return true
+		}
+	}
+	return false
+}
+
 func Int64SliceIndexFirst(s []int64, data int64) int {
 	for i, item := range s {
 		if item == data {
