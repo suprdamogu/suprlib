@@ -25,3 +25,20 @@ func UIntSliceRemoveFirst(s []uint, data uint) []uint {
 	}
 	return append(s[:i], s[i+1:]...)
 }
+
+func Int64SliceIndexFirst(s []int64, data int64) int {
+	for i, item := range s {
+		if item == data {
+			return i
+		}
+	}
+	return -1
+}
+
+func Int64SliceRemoveFirst(s []int64, data int64) []int64 {
+	i := Int64SliceIndexFirst(s, data)
+	if i == -1 {
+		return s
+	}
+	return append(s[:i], s[i+1:]...)
+}
