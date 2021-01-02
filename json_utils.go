@@ -16,3 +16,7 @@ func JsonToMap(s []byte) (map[string]interface{}, error) {
 	}
 	return msgMap, nil
 }
+
+func JsonToObj(s []byte, o interface{}) error {
+	return json.Unmarshal(s, o)
+}
