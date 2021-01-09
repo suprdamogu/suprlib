@@ -51,3 +51,10 @@ func Int64SliceRemoveFirst(s []int64, data int64) []int64 {
 	}
 	return append(s[:i], s[i+1:]...)
 }
+func Int64SliceRemoveSlice(s []int64, datas []int64) []int64 {
+	result := s
+	for _, data := range datas {
+		result = Int64SliceRemoveFirst(result, data)
+	}
+	return result
+}
