@@ -29,3 +29,11 @@ func CloneMapInt64Int64(data map[int64]int64) map[int64]int64 {
 	}
 	return m
 }
+
+func MapInt64Keys(data map[int64]interface{}) []int64 {
+	s := make([]int64, 0)
+	for k := range data {
+		s = append(s, k)
+	}
+	return s
+}
