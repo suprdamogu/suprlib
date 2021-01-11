@@ -37,3 +37,10 @@ func MapInt64Keys(data map[int64]interface{}) []int64 {
 	}
 	return s
 }
+
+func MapIsEmpty(data map[interface{}]interface{}) bool {
+	for _ = range data {
+		return false
+	}
+	return true
+}
