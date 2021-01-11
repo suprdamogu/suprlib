@@ -58,3 +58,11 @@ func Int64SliceRemoveSlice(s []int64, datas []int64) []int64 {
 	}
 	return result
 }
+
+func CloneSliceInt64(datas []int64) []int64 {
+	s := make([]int64, 0)
+	for _, data := range datas {
+		s = append(s, data)
+	}
+	return s
+}

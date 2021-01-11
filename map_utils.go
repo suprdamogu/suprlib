@@ -21,3 +21,11 @@ func JsonMapGetUIntValue(data map[string]interface{}, key string) (uint, error) 
 	}
 	return uint(vI64), nil
 }
+
+func CloneMapInt64Int64(data map[int64]int64) map[int64]int64 {
+	m := make(map[int64]int64)
+	for k, v := range data {
+		m[k] = v
+	}
+	return m
+}
