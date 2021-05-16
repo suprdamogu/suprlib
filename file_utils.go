@@ -2,7 +2,19 @@ package suprlib
 
 import (
 	"io/ioutil"
+	"os"
 )
+
+func FileExists(filename string) bool{
+	_, err := os.Stat(filename)
+	if err == nil {
+		return true
+	}
+	if os.IsNotExist(err) {
+		return false
+	}
+	return false
+}
 
 func ReadFile(filename string) []byte {
 	b, err := ioutil.ReadFile(filename)
@@ -26,3 +38,4 @@ func ReadJsonArrayFile(filename string) (interface{}, error) {
 	}
 	return out, nil
 }
+
