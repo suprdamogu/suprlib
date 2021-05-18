@@ -2,6 +2,7 @@ package suprlib
 
 import (
 	"encoding/json"
+	"io"
 	"io/ioutil"
 	"os"
 )
@@ -47,4 +48,18 @@ func WriteJsonFile(filename string, obj interface{}) error {
 	}
 	err = ioutil.WriteFile(filename, b, 0666)
 	return err
+}
+
+func AppendToFile(filename string, b []byte) error {
+	f, err := os.OpenFile(filename, os.O_WRONLY, 0644)
+	if err != nil {
+		return err
+	}
+	n, err := f.Seek(0, io.SeekEnd)
+	if err != nil {
+		return err
+	}
+	_, err = f.WriteAt(b, n)
+	defer f.Close()
+	return nil
 }
