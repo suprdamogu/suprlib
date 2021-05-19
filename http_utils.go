@@ -26,6 +26,13 @@ func HttpGet(url string, headers map[string]string) ([]byte, error) {
 	return ioutil.ReadAll(resp.Body)
 }
 
+func HttpGetAsync(url string, headers map[string]string, callback func([]byte, error)) {
+	go func() {
+		s, err := HttpGet(url, headers)
+		callback(s, err)
+	}()
+}
+
 func HttpPost(url string, headers map[string]string, body io.Reader) ([]byte, error) {
 	client := &http.Client{}
 	req, err := http.NewRequest("POST", url, body)
@@ -44,4 +51,11 @@ func HttpPost(url string, headers map[string]string, body io.Reader) ([]byte, er
 	}
 	defer resp.Body.Close()
 	return ioutil.ReadAll(resp.Body)
+}
+
+func HttpPostAsync(url string, headers map[string]string, body io.Reader, callback func([]byte, error)) {
+	go func() {
+		s, err := HttpPost(url, headers, body)
+		callback(s, err)
+	}()
 }
