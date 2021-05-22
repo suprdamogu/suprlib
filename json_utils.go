@@ -25,12 +25,12 @@ func JsonToMap(s []byte) (map[string]interface{}, error) {
 	return msgMap, nil
 }
 
-func JsonToObj(s []byte, out interface{}) error {
+func JsonToObj(s []byte, out interface{}) (interface{}, error) {
 	decoder := json.NewDecoder(bytes.NewBuffer(s))
 	decoder.UseNumber()
-	err := decoder.Decode(out)
+	err := decoder.Decode(&out)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return out, nil
 }
