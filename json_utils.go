@@ -28,7 +28,7 @@ func JsonToMap(s []byte) (map[string]interface{}, error) {
 func JsonToObj(s []byte, out interface{}) error {
 	decoder := json.NewDecoder(bytes.NewBuffer(s))
 	decoder.UseNumber()
-	err := decoder.Decode(&out)
+	err := decoder.Decode(out)
 	if err != nil {
 		return err
 	}
