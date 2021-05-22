@@ -13,16 +13,6 @@ func JsonMarshal(v interface{}) []byte {
 	return j
 }
 
-func JsonDecode(s []byte, out interface{}) error {
-	decoder := json.NewDecoder(bytes.NewBuffer(s))
-	decoder.UseNumber()
-	err := decoder.Decode(&out)
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
 func JsonToMap(s []byte) (map[string]interface{}, error) {
 	var msgMap map[string]interface{}
 	decoder := json.NewDecoder(bytes.NewBuffer(s))
@@ -35,6 +25,12 @@ func JsonToMap(s []byte) (map[string]interface{}, error) {
 	return msgMap, nil
 }
 
-func JsonToObj(s []byte, o interface{}) error {
-	return json.Unmarshal(s, o)
+func JsonToObj(s []byte, out interface{}) error {
+	decoder := json.NewDecoder(bytes.NewBuffer(s))
+	decoder.UseNumber()
+	err := decoder.Decode(&out)
+	if err != nil {
+		return err
+	}
+	return nil
 }
