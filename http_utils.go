@@ -59,3 +59,23 @@ func HttpPostAsync(url string, headers map[string]string, body io.Reader, callba
 		callback(s, err)
 	}()
 }
+
+func HttpDelete(url string, headers map[string]string, body io.Reader)  ([]byte, error) {
+	client := &http.Client{}
+	req, err := http.NewRequest("DELETE", url, body)
+	if err != nil {
+		return nil, err
+	}
+	if headers != nil {
+		for k, v := range headers {
+			req.Header.Set(k, v)
+		}
+	}
+	req.Close = true
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	return ioutil.ReadAll(resp.Body)
+}
