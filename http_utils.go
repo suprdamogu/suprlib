@@ -6,9 +6,9 @@ import (
 	"net/http"
 )
 
-func HttpGet(url string, headers map[string]string) ([]byte, error) {
+func HttpGet(url string, headers map[string]string, body io.Reader) ([]byte, error) {
 	client := &http.Client{}
-	req, err := http.NewRequest("GET", url, nil)
+	req, err := http.NewRequest("GET", url, body)
 	if err != nil {
 		return nil, err
 	}
@@ -26,9 +26,9 @@ func HttpGet(url string, headers map[string]string) ([]byte, error) {
 	return ioutil.ReadAll(resp.Body)
 }
 
-func HttpGetAsync(url string, headers map[string]string, callback func([]byte, error)) {
+func HttpGetAsync(url string, headers map[string]string, body io.Reader, callback func([]byte, error)) {
 	go func() {
-		s, err := HttpGet(url, headers)
+		s, err := HttpGet(url, headers, body)
 		callback(s, err)
 	}()
 }
@@ -60,7 +60,7 @@ func HttpPostAsync(url string, headers map[string]string, body io.Reader, callba
 	}()
 }
 
-func HttpDelete(url string, headers map[string]string, body io.Reader)  ([]byte, error) {
+func HttpDelete(url string, headers map[string]string, body io.Reader) ([]byte, error) {
 	client := &http.Client{}
 	req, err := http.NewRequest("DELETE", url, body)
 	if err != nil {
