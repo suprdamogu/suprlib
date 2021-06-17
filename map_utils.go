@@ -38,3 +38,7 @@ func MapInt64Int64Keys(data map[int64]int64) []int64 {
 	return s
 }
 
+func ContainsKey(m map[string]interface{}, key string) bool {
+	_, ok := m[key]
+	return ok
+}
