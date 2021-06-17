@@ -42,3 +42,13 @@ func ContainsKey(m map[string]interface{}, key string) bool {
 	_, ok := m[key]
 	return ok
 }
+
+func ContainsKeys(m map[string]interface{}, keys []string) bool {
+	for _, key := range keys {
+		_, ok := m[key]
+		if !ok {
+			return false
+		}
+	}
+	return true
+}
