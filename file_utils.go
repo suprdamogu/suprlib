@@ -58,7 +58,7 @@ func WriteJsonFile(filename string, obj interface{}) error {
 }
 
 func AppendToFile(filename string, b []byte) error {
-	f, err := os.OpenFile(filename, os.O_WRONLY, 0644)
+	f, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		return err
 	}
