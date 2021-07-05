@@ -21,9 +21,16 @@ func FileExists(filename string) bool {
 func ReadFile(filename string) []byte {
 	b, err := ioutil.ReadFile(filename)
 	if err != nil {
-		panic("No File")
+		panic(err)
 	}
 	return b
+}
+
+func WriteFile(filename string, datas []byte) {
+	err := ioutil.WriteFile(filename, datas, 0644)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func ReadJsonMapFile(filename string) (map[string]interface{}, error) {
