@@ -66,3 +66,12 @@ func CloneSliceInt64(datas []int64) []int64 {
 	}
 	return s
 }
+
+func StringSliceContains(datas []string, s string) bool {
+	for _, data := range datas {
+		if s == data {
+			return true
+		}
+	}
+	return false
+}
